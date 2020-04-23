@@ -14,8 +14,8 @@ Para levantar el servidor de nombres (el CLASSPATH debe incluir el path de las c
 
 Para ejecutar el servidor:
 
-	java -Djava.rmi.server.codebase=file:/TP3_RMI/ tp3.Server
+	java -Djava.rmi.server.codebase=file:/TP3_RMI/ subasta.tp3.Server
 
 Para ejecutar el cliente:
 
-	java tp3.Client
+	java subasta.tp3.Client

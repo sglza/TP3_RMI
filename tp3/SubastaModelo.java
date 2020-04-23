@@ -1,4 +1,4 @@
-package tp3;
+package subasta.tp3;
 
 import java.io.Serializable;
 import java.util.Hashtable;

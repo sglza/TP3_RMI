@@ -1,4 +1,4 @@
-package tp3;
+package subasta.tp3;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;

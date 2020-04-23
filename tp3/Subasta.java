@@ -1,4 +1,4 @@
-package tp3;
+package subasta.tp3;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
