@@ -2,7 +2,7 @@
 
 Colocar una copia del contenido de este directorio en:
 
-CD:\...\TP3_RMI
+CD:\\...\TP3_RMI
 
 Para compilar utilizar la siguiente linea:
 
