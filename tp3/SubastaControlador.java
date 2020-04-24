@@ -57,7 +57,7 @@ public class SubastaControlador implements ActionListener, ListSelectionListener
             modelo.registraUsuario(usuario);
             try {
                 stub.sendModel(modelo);
-                stub.updateModel();
+                stub.updateModels();
             } catch (RemoteException e) {
                 System.err.println("Client exception: " + e.toString());
                 e.printStackTrace();
@@ -73,7 +73,7 @@ public class SubastaControlador implements ActionListener, ListSelectionListener
             System.out.println("OFFERS:   " + Client.model.ofertas);
             try {
                 stub.sendModel(modelo);
-                stub.updateModel();
+                stub.updateModels();
             } catch (RemoteException e) {
                 System.err.println("Client exception: " + e.toString());
                 e.printStackTrace();
@@ -106,8 +106,8 @@ public class SubastaControlador implements ActionListener, ListSelectionListener
             try {
                 stub.sendModel(modelo);
                 stub.sendPriceList(listaConPrecios);
-                stub.updateModel();
-                stub.updatePriceList();
+                stub.updateModels();
+                stub.updatePriceLists();
             } catch (RemoteException e) {
                 System.err.println("Client exception: " + e.toString());
                 e.printStackTrace();

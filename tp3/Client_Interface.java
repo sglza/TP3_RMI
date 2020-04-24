@@ -9,7 +9,7 @@ import java.util.Vector;
 public interface Client_Interface extends Remote {
     void updateSubscription(String update) throws RemoteException;
 
-    void updateModels(SubastaModelo model) throws RemoteException;
+    void updateModel(SubastaModelo model) throws RemoteException;
 
-    void updatePriceLists(Hashtable priceList) throws RemoteException;
+    void updatePriceList(Hashtable priceList) throws RemoteException;
 }

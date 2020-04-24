@@ -9,9 +9,9 @@ public interface Subasta extends Remote {
 
     void suscribe(Client_Interface c) throws RemoteException;
 
-    public void updateModel() throws RemoteException;
+    public void updateModels() throws RemoteException;
 
-    public void updatePriceList() throws RemoteException;
+    public void updatePriceLists() throws RemoteException;
 
     public SubastaModelo recvModel() throws RemoteException;
 

@@ -40,13 +40,13 @@ public class Server implements Subasta {
     }
 
     @Override
-    public void updateModel() {
+    public void updateModels() {
 
         int index = 0;
 
         try {
             for (Client_Interface c : clients) {
-                c.updateModels(model);
+                c.updateModel(model);
                 index++;
             }
         } catch (Exception e) {
@@ -57,7 +57,7 @@ public class Server implements Subasta {
     }
 
     @Override
-    public void updatePriceList() {
+    public void updatePriceLists() {
 
         int index = 0;
 
@@ -65,7 +65,7 @@ public class Server implements Subasta {
 
         try {
             for (Client_Interface c : clients) {
-                c.updatePriceLists(model.priceList);
+                c.updatePriceList(model.priceList);
                 index++;
             }
         } catch (Exception e) {

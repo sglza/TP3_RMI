@@ -66,7 +66,7 @@ public class Client implements Client_Interface {
     }
 
     @Override
-    public void updateModels(SubastaModelo model) throws RemoteException {
+    public void updateModel(SubastaModelo model) throws RemoteException {
         // System.out.println(Client.model.usuarios);
         Client.model = model;
         System.out.println("Updated data: ");
@@ -76,7 +76,7 @@ public class Client implements Client_Interface {
     }
 
     @Override
-    public void updatePriceLists(Hashtable priceList) throws RemoteException {
+    public void updatePriceList(Hashtable priceList) throws RemoteException {
         controller.listaConPrecios = priceList;
     }
 
