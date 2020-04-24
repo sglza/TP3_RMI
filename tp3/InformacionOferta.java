@@ -1,6 +1,8 @@
 package subasta.tp3;
 
-public class InformacionOferta {
+import java.io.Serializable;
+
+public class InformacionOferta implements Serializable {
 
     String comprador;
     String producto;
