@@ -15,6 +15,7 @@ public class InformacionProducto implements Serializable {
         producto = p;
         precioInicial = pi;
         precioActual = pi;
+
     }
 
     public boolean actualizaPrecio(float monto) {

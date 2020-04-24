@@ -4,21 +4,25 @@ import java.rmi.registry.Registry;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-
+import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
+import subasta.tp3.SubastaModelo;
+
 public class Server implements Subasta {
 
     SubastaModelo model = new SubastaModelo();
+    Hashtable priceList;
 
     private List<Client_Interface> clients = new LinkedList<>();
 
     public Server() {
     }
 
-    public boolean suscribe(Client_Interface client) {
+    @Override
+    public void suscribe(Client_Interface client) {
 
         int index = 0;
         clients.add(client);
@@ -32,10 +36,11 @@ public class Server implements Subasta {
             clients.remove(index);
             System.out.println("Unsubscribed client: #" + index);
         }
-        return true;
+
     }
 
-    public boolean updateModel() {
+    @Override
+    public void updateModel() {
 
         int index = 0;
 
@@ -48,7 +53,25 @@ public class Server implements Subasta {
             clients.remove(index);
             System.out.println("Removed Client: " + index);
         }
-        return true;
+
+    }
+
+    @Override
+    public void updatePriceList() {
+
+        int index = 0;
+
+        System.out.println("MODEL PRICE LIST: " + model.priceList);
+
+        try {
+            for (Client_Interface c : clients) {
+                c.updatePriceLists(model.priceList);
+                index++;
+            }
+        } catch (Exception e) {
+            clients.remove(index);
+            System.out.println("Removed Client: " + index);
+        }
 
     }
 
@@ -83,6 +106,12 @@ public class Server implements Subasta {
     @Override
     public SubastaModelo recvUpdatedModel() throws RemoteException {
         return model;
+    }
+
+    @Override
+    public void sendPriceList(Hashtable l) throws RemoteException {
+        System.out.println("PRICE LIST SENT: " + l);
+        model.priceList = l;
     }
 
 }
