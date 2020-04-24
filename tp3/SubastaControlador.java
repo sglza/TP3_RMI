@@ -17,7 +17,7 @@ public class SubastaControlador implements ActionListener, ListSelectionListener
 
     SubastaVista vista;
     SubastaModelo modelo;
-    Hashtable listaConPrecios;
+    Hashtable listaConPrecios = new Hashtable();
 
     Subasta stub;
 
@@ -37,6 +37,7 @@ public class SubastaControlador implements ActionListener, ListSelectionListener
 
         vista = v;
         modelo = m;
+
     }
 
     public void actionPerformed(ActionEvent evento) {
@@ -55,6 +56,7 @@ public class SubastaControlador implements ActionListener, ListSelectionListener
             modelo.registraUsuario(usuario);
             try {
                 stub.sendModel(modelo);
+                stub.updateModel();
             } catch (RemoteException e) {
                 System.err.println("Client exception: " + e.toString());
                 e.printStackTrace();
@@ -65,14 +67,31 @@ public class SubastaControlador implements ActionListener, ListSelectionListener
             monto = vista.getPrecioInicial();
             System.out.println("Haciendo oferta del producto: " + producto);
             modelo.agregaProductoALaVenta(usuario, producto, monto);
+            System.out.println("USERS:    " + Client.model.usuarios);
+            System.out.println("PRODUCTS: " + Client.model.productos);
+            System.out.println("OFFERS:   " + Client.model.ofertas);
             try {
                 stub.sendModel(modelo);
+                stub.updateModel();
             } catch (RemoteException e) {
                 System.err.println("Client exception: " + e.toString());
                 e.printStackTrace();
             }
         } else if (evento.getActionCommand().equals("Obtener lista")) {
-            updateList();
+
+            Vector lista = modelo.obtieneCatalogo();
+            Enumeration it;
+            InformacionProducto info;
+            // listaConPrecios = new Hashtable();
+            vista.reinicializaListaProductos();
+            it = lista.elements();
+            while (it.hasMoreElements()) {
+                info = (InformacionProducto) it.nextElement();
+                listaConPrecios.put(info.producto, String.valueOf(info.precioActual));
+                vista.agregaProducto(info.producto);
+                System.out.println(info.precioActual);
+            }
+
         } else if (evento.getActionCommand().equals("Ofrecer")) {
             producto = vista.getProductoSeleccionado();
             monto = vista.getMontoOfrecido();
@@ -80,11 +99,12 @@ public class SubastaControlador implements ActionListener, ListSelectionListener
             modelo.agregaOferta(usuario, producto, monto);
             try {
                 stub.sendModel(modelo);
+                stub.updateModel();
             } catch (RemoteException e) {
                 System.err.println("Client exception: " + e.toString());
                 e.printStackTrace();
             }
-            updateList();
+            // updateList();
         }
     }
 
