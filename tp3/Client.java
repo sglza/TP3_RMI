@@ -2,6 +2,7 @@ package subasta.tp3;
 
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Hashtable;
 import java.util.Vector;
 
 import subasta.tp3.Client_Interface;
@@ -60,20 +61,23 @@ public class Client implements Client_Interface {
     }
 
     @Override
-    public boolean updateSubscription(String update) {
+    public void updateSubscription(String update) {
         System.out.println(update);
-        return true;
     }
 
     @Override
-    public boolean updateModels(SubastaModelo model) throws RemoteException {
+    public void updateModels(SubastaModelo model) throws RemoteException {
         // System.out.println(Client.model.usuarios);
         Client.model = model;
         System.out.println("Updated data: ");
         System.out.println("USERS:    " + Client.model.usuarios);
         System.out.println("PRODUCTS: " + Client.model.productos);
         System.out.println("OFFERS:   " + Client.model.ofertas);
-        return true;
+    }
+
+    @Override
+    public void updatePriceLists(Hashtable priceList) throws RemoteException {
+        controller.listaConPrecios = priceList;
     }
 
 }
