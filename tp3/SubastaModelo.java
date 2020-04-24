@@ -10,11 +10,14 @@ public class SubastaModelo implements Serializable {
     Hashtable productos;
     Hashtable ofertas;
 
+    Hashtable priceList;
+
     public SubastaModelo() {
 
         usuarios = new Hashtable();
         productos = new Hashtable();
         ofertas = new Hashtable();
+        priceList = new Hashtable();
 
     }
 
