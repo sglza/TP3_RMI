@@ -15,8 +15,6 @@ public interface Subasta extends Remote {
 
     public SubastaModelo recvModel() throws RemoteException;
 
-    public SubastaModelo recvUpdatedModel() throws RemoteException;
-
     public void sendModel(SubastaModelo m) throws RemoteException;
 
     public void sendPriceList(Hashtable l) throws RemoteException;

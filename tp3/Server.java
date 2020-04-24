@@ -104,11 +104,6 @@ public class Server implements Subasta {
     }
 
     @Override
-    public SubastaModelo recvUpdatedModel() throws RemoteException {
-        return model;
-    }
-
-    @Override
     public void sendPriceList(Hashtable l) throws RemoteException {
         System.out.println("PRICE LIST SENT: " + l);
         model.priceList = l;
