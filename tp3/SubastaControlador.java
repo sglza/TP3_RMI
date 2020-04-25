@@ -95,6 +95,8 @@ public class SubastaControlador implements ActionListener, ListSelectionListener
                 vista.agregaProducto(info.producto);
             }
 
+            System.out.println("Price List: " + listaConPrecios);
+
         } else if (evento.getActionCommand().equals("Ofrecer")) {
             producto = vista.getProductoSeleccionado();
             monto = vista.getMontoOfrecido();
@@ -140,6 +142,7 @@ public class SubastaControlador implements ActionListener, ListSelectionListener
             listaConPrecios.put(info.producto, String.valueOf(info.precioActual));
             vista.agregaProducto(info.producto);
         }
+        System.out.println("Price List: " + listaConPrecios);
     }
 
 }
