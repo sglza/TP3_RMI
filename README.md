@@ -18,4 +18,4 @@ Para ejecutar el servidor:
 
 Para ejecutar el cliente:
 
-	java subasta.tp3.Client
+	java subasta.tp3.Client [Nombre]
